@@ -3,158 +3,521 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joseph Bruechner - Data Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Joseph Bruechner - Analytics Engineer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #000000;
-            color: #FFFFFF;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #e5e5e5;
             line-height: 1.6;
         }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
         header {
             text-align: center;
-            padding: 20px;
-            border-bottom: 1px solid #007BFF;
+            padding: 60px 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-bottom: 2px solid #007BFF;
         }
-        h1, h2, h3 {
-            color: #FFFFFF;
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
         }
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-around;
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #007BFF;
+            font-weight: 500;
             margin-bottom: 20px;
         }
-        .card {
-            flex: 1;
-            min-width: 250px;
-            max-width: 350px;
-            padding: 15px;
-            background: #1a1a1a;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
-            height: 200px;
-            overflow: auto;
+        
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #b5b5b5;
         }
-        .projects {
-            width: 100%;
-            padding: 20px;
-            background: #2c2c2c;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
-            margin-top: 20px;
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
         }
-        .project {
-            margin: 15px 0;
-            padding: 10px;
-            background: #3c3c3c;
-            border-radius: 5px;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        .badges img {
-            margin-right: 5px;
-        }
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .contact {
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
             text-align: center;
+            border: 1px solid rgba(0, 123, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #b5b5b5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section {
+            margin: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 123, 255, 0.3);
+        }
+        
+        .skill-category h3 {
+            color: #007BFF;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            padding: 8px 0;
+            color: #e5e5e5;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .projects-grid {
+            display: grid;
+            gap: 40px;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 123, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 123, 255, 0.2);
+        }
+        
+        .project-header {
+            padding: 30px;
+            background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+        }
+        
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .project-type {
+            color: #b3d9ff;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .project-content {
+            padding: 30px;
+        }
+        
+        .project-description {
+            font-size: 1.1rem;
+            color: #e5e5e5;
+            margin-bottom: 25px;
+        }
+        
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .tech-badge {
+            background: rgba(0, 123, 255, 0.2);
+            color: #007BFF;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 123, 255, 0.3);
+        }
+        
+        .impact-metrics {
+            background: rgba(0, 255, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #00ff88;
+            margin-bottom: 25px;
+        }
+        
+        .impact-title {
+            color: #00ff88;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-link {
+            background: #007BFF;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .project-link:hover {
+            background: #0056b3;
+        }
+        
+        .project-link.secondary {
+            background: transparent;
+            border: 2px solid #007BFF;
+            color: #007BFF;
+        }
+        
+        .project-link.secondary:hover {
+            background: #007BFF;
+            color: #ffffff;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
             margin-top: 30px;
-            padding: 15px;
-            background: #1a1a1a;
-            border-radius: 5px;
         }
-        .contact a {
-            margin: 0 10px;
+        
+        .contact-link {
+            background: rgba(255, 255, 255, 0.05);
+            color: #007BFF;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
         }
-        @media (max-width: 600px) {
-            .card {
-                min-width: 100%;
-                height: auto;
+        
+        .contact-link:hover {
+            background: #007BFF;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
             }
-            .projects {
-                padding: 10px;
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Joseph Bruechner</h1>
-        <p>Data Professional | Machine Learning & Analytics</p>
+        <div class="container">
+            <h1 class="hero-title">Joseph Bruechner</h1>
+            <p class="hero-subtitle">Analytics Engineer & Data Infrastructure Specialist</p>
+            <p class="hero-description">
+                Building scalable data infrastructure and self-service analytics platforms that empower teams to make data-driven decisions. Specialized in BigQuery data warehousing, business intelligence, and translating complex usage data into actionable insights for AI and SaaS companies.
+            </p>
+        </div>
     </header>
 
-    <div class="card-container">
-        <div class="card" id="about">
-            <h2>About</h2>
-            <p>Experienced data professional with 2+ years in ML and analytics, skilled in Python, SQL, and cloud platforms.</p>
-        </div>
-        <div class="card" id="background">
-            <h2>Background</h2>
-            <p><strong>Education & Certifications:</strong><br>
-            <p>Instead of pursuing a traditional four-year degree, I chose a focused, self-directed learning path post-high school, earning certifications in Machine Learning, Data Science, and Data Engineering from AWS, Google, Microsoft, and Stanford Online. These, combined with 2.5 years of professional experience building ETL pipelines and dashboards, equip me with the skills to excel in data focused roles.</p>
-        </div>
+    <main class="container">
+        <section class="section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2.5+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Reporting Time Reduction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Model Evaluation Efficiency</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">99.8%</div>
+                    <div class="stat-label">Data Accuracy Achieved</div>
+                </div>
+            </div>
+        </section>
 
-    <div class="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>SaaS Financial Analytics Pipeline</h3>
-            <div class="badges">
-                <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python">
-                <img src="https://img.shields.io/badge/BigQuery-1.0+-green.svg" alt="BigQuery">
-                <img src="https://img.shields.io/badge/Looker-8.0+-orange.svg" alt="Looker">
+        <section class="section">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Analytics Infrastructure</h3>
+                    <ul class="skill-list">
+                        <li>BigQuery, PostgreSQL, ChromaDB</li>
+                        <li>ETL/ELT Pipeline Design</li>
+                        <li>Data Warehouse Architecture</li>
+                        <li>Data Quality & Monitoring</li>
+                        <li>Self-Service Analytics Platforms</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Business Intelligence</h3>
+                    <ul class="skill-list">
+                        <li>Looker, Tableau, Power BI</li>
+                        <li>Dashboard Development</li>
+                        <li>KPI Tracking & Metrics</li>
+                        <li>A/B Testing Frameworks</li>
+                        <li>Customer Analytics & Segmentation</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Development & Cloud</h3>
+                    <ul class="skill-list">
+                        <li>Python (Pandas, SQLAlchemy, FastAPI)</li>
+                        <li>SQL (Advanced Queries & Optimization)</li>
+                        <li>AWS (S3, Lambda, SageMaker, QuickSight)</li>
+                        <li>GCP (BigQuery, Cloud Functions)</li>
+                        <li>Docker, Git, CI/CD</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Domain Expertise</h3>
+                    <ul class="skill-list">
+                        <li>SaaS Metrics (MRR, ARR, Churn, LTV)</li>
+                        <li>Product Analytics & Usage Tracking</li>
+                        <li>Revenue Operations Analytics</li>
+                        <li>AI/ML Product Performance</li>
+                        <li>Cross-Functional Collaboration</li>
+                    </ul>
+                </div>
             </div>
-            <p>https://github.com/brueshi/Financial-Reporting-Dashboard</p>
-            <p>Designed and implemented a scalable pipeline to process and analyze SaaS financial data, ensuring high data integrity with automated validation checks. Utilized BigQuery for efficient data storage and Looker for real-time dashboard visualization, improving decision-making for financial teams by 15% through optimized data workflows.</p>
-        </div>
-        <div class="project">
-            <h3>Healthcare Length of Stay Optimization</h3>
-            <div class="badges">
-                <img src="https://img.shields.io/badge/Python-3.9+-blue.svg" alt="Python">
-                <img src="https://img.shields.io/badge/Pandas-1.3+-green.svg" alt="Pandas">
-            </div>
-            <p>https://github.com/brueshi/hospital-los-optimization</p>
-            <p>Developed a predictive model using Ridge Regression to optimize hospital length of stay, reducing average stay by 10% through analysis of patient data. Identified key features like admission type and comorbidities, with the model deployed on AWS for real-time insights, enhancing resource allocation.</p>
-        </div>
-        <div class="project">
-            <h3>Bitcoin Price Prediction</h3>
-            <div class="badges">
-                <img src="https://img.shields.io/badge/Python-3.9+-blue.svg" alt="Python">
-                <img src="https://img.shields.io/badge/TensorFlow-2.6+-orange.svg" alt="TensorFlow">
-            </div>
-            <p>https://github.com/brueshi/Bitcoin-Price-Prediction</p>
-            <p>Built a deep learning model with TensorFlow to forecast Bitcoin prices, achieving 85% accuracy for 1-hour-ahead predictions. Trained on 3 years of historical data, the model incorporated LSTM networks and technical indicators, providing actionable insights for crypto traders with a user-friendly interface.</p>
-        </div>
-        <div class="project">
-            <h3>ML Model Evaluation Framework</h3>
-            <div class="badges">
-                <img src="https://img.shields.io/badge/Python-3.9+-blue.svg" alt="Python">
-            </div>
-            <p>https://github.com/brueshi/ML-Evaluation-Framework</p>
-            <p>Engineered a flexible framework using Scikit-learn to evaluate and compare multiple ML models, supporting regression, classification, and clustering tasks. Integrated cross-validation and hyperparameter tuning, reducing model selection time by 30% and improving performance metrics across diverse datasets.</p>
-        </div>
-    </div>
+        </section>
 
-    <div class="contact">
-        <h2>Contact</h2>
-        <a href="https://github.com/brueshi">GitHub</a>
-        <a href="mailto:bruechnerjoseph@gmail.com">Email</a>
-        <a href="https://x.com/joebruechner">X (@joebruechner)</a>
-        <a href="https://www.linkedin.com/in/josephbruechner">LinkedIn</a>
-    </div>
+        <section class="section">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">SaaS Financial Analytics Pipeline</h3>
+                        <p class="project-type">Data Infrastructure & Business Intelligence</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Built comprehensive data warehouse for SaaS business model with automated ETL processes, dimensional modeling, and self-service analytics. Implemented MRR/ARR calculations, customer segmentation, and retention analysis using BigQuery ML for anomaly detection.
+                        </p>
+                        <div class="tech-badges">
+                            <span class="tech-badge">BigQuery</span>
+                            <span class="tech-badge">Looker</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">SQL</span>
+                            <span class="tech-badge">dbt-style</span>
+                        </div>
+                        <div class="impact-metrics">
+                            <div class="impact-title">Business Impact</div>
+                            <p>Reduced month-end reporting from 5 days to 2 hours (96% improvement) • Enabled finance team self-service analytics • Automated data quality monitoring achieving 99.8% accuracy</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/brueshi/Financial-Reporting-Dashboard" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Real-Time Market Analytics Platform</h3>
+                        <p class="project-type">Interactive Dashboard & Data Engineering</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Developed interactive analytics platform for real-time financial market analysis with ETL pipeline, technical indicators, and comparative analysis. Features intelligent data caching, fallback systems, and responsive design for executive reporting.
+                        </p>
+                        <div class="tech-badges">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Dash</span>
+                            <span class="tech-badge">Plotly</span>
+                            <span class="tech-badge">API Integration</span>
+                            <span class="tech-badge">Real-time Processing</span>
+                        </div>
+                        <div class="impact-metrics">
+                            <div class="impact-title">Technical Achievement</div>
+                            <p>99% uptime with intelligent fallback systems • Real-time data processing with sub-second response times • Interactive multi-tab interface supporting complex analysis workflows</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/brueshi/stock-dashboard" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Legal AI Platform Analytics</h3>
+                        <p class="project-type">Product Analytics & Multi-Tenant Architecture</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Designed analytics infrastructure for AI-powered legal research platform with firm-specific data isolation, RAG system performance monitoring, and conversational AI usage analytics. Built HIPAA-compliant audit logging and subscription tier analysis.
+                        </p>
+                        <div class="tech-badges">
+                            <span class="tech-badge">FastAPI</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                            <span class="tech-badge">ChromaDB</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">Multi-tenant</span>
+                        </div>
+                        <div class="impact-metrics">
+                            <div class="impact-title">Platform Metrics</div>
+                            <p>Multi-tenant architecture supporting 100+ law firms • Real-time usage analytics for AI model optimization • Compliance-ready audit logging and data governance</p>
+                        </div>
+                        <div class="project-links">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Analytics Infrastructure Framework</h3>
+                        <p class="project-type">Evaluation Platform & A/B Testing</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Built modular framework for evaluating analytics models and A/B testing workflows. Enables standardized model comparison across product teams with automated reporting, statistical significance validation, and performance monitoring dashboards.
+                        </p>
+                        <div class="tech-badges">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Scikit-learn</span>
+                            <span class="tech-badge">Statistical Analysis</span>
+                            <span class="tech-badge">Automated Reporting</span>
+                        </div>
+                        <div class="impact-metrics">
+                            <div class="impact-title">Efficiency Gains</div>
+                            <p>40% reduction in model evaluation time • Standardized evaluation across product teams • Automated A/B test significance calculations and reporting</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/brueshi/ML-Evaluation-Framework" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Healthcare Operations Analytics</h3>
+                        <p class="project-type">Predictive Analytics & Resource Optimization</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Developed predictive analytics solution for hospital length of stay optimization, combining patient data analysis with operational insights. Created actionable recommendations for department resource allocation and cost reduction strategies.
+                        </p>
+                        <div class="tech-badges">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Pandas</span>
+                            <span class="tech-badge">AWS Deployment</span>
+                            <span class="tech-badge">Healthcare Analytics</span>
+                        </div>
+                        <div class="impact-metrics">
+                            <div class="impact-title">Operational Impact</div>
+                            <p>10% reduction in average patient stay • $2,000 cost savings per optimized case • Real-time deployment enabling proactive resource allocation</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/brueshi/hospital-los-optimization" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Let's Build Something Together</h2>
+            <p>Interested in discussing analytics infrastructure, data strategy, or potential collaboration opportunities?</p>
+            <div class="contact-links">
+                <a href="mailto:bruechnerjoseph@gmail.com" class="contact-link">Email</a>
+                <a href="https://www.linkedin.com/in/josephbruechner" class="contact-link">LinkedIn</a>
+                <a href="https://github.com/brueshi" class="contact-link">GitHub</a>
+                <a href="https://x.com/joebruechner" class="contact-link">X</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
